@@ -28,7 +28,7 @@ const CheckoutPage = () => {
     region: '',
     country: '',
     shippingMethod: 'Standard Delivery',
-    paymentMethod: 'Cash on Delivery (COD)', // Default to COD
+    paymentMethod: 'EasyPaisa', // Updated default
     promoCode: '',
     notes: '',
   });
@@ -165,8 +165,8 @@ const CheckoutPage = () => {
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
-    // Clear the Base64 string if payment method changes from JazzCash/Bank Transfer
-    if (name === 'paymentMethod' && value !== 'JazzCash/Bank Transfer') {
+    // Clear the Base64 string if payment method changes from EasyPaisa
+    if (name === 'paymentMethod' && value !== 'EasyPaisa') {
       setBankTransferProofBase64(null);
       setErrors(prev => ({ ...prev, bankTransferProof: '' }));
     }
@@ -222,8 +222,8 @@ const CheckoutPage = () => {
       newErrors.phone = 'Please enter a valid phone number (at least 7 digits)';
     }
 
-    // Only require bank transfer proof for JazzCash/Bank Transfer
-    if (form.paymentMethod === 'JazzCash/Bank Transfer' && !bankTransferProofBase64) {
+    // Require bank transfer proof for EasyPaisa
+    if (!bankTransferProofBase64) {
       newErrors.bankTransferProof = 'Please upload a screenshot of your JazzCash transfer or bank transfer receipt.';
     }
 
@@ -308,8 +308,8 @@ const CheckoutPage = () => {
       status: 'processing',
       // Track that stock was already reduced at order placement
       stockReducedAtOrderPlacement: true,
-      // Only include bank transfer proof for JazzCash/Bank Transfer payments
-      bankTransferProofBase64: form.paymentMethod === 'JazzCash/Bank Transfer' ? bankTransferProofBase64 : null,
+      // Include bank transfer proof
+      bankTransferProofBase64: bankTransferProofBase64,
     };
 
     try {
@@ -341,7 +341,7 @@ const CheckoutPage = () => {
     return (
       <>
         <Header />
-        <div className="min-h-screen bg-[#FFF5EE] py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen bg-[#FFEDFA] py-8 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center py-16">
               <h1 className="text-3xl font-bold text-gray-900 mb-4">Your Cart is Empty</h1>
@@ -362,7 +362,7 @@ const CheckoutPage = () => {
   return (
     <>
       <Header />
-      <div className="min-h-screen bg-[#FFF5EE] py-8 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-[#FFEDFA] py-8 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Breadcrumbs */}
           <nav className="flex mb-8" aria-label="Breadcrumb">
@@ -538,33 +538,28 @@ const CheckoutPage = () => {
 
               <h2 className="text-lg sm:text-xl font-semibold mt-8 mb-6 pb-2 border-b">Payment Method</h2>
 
-              <div className="space-y-4">
-                {['Cash on Delivery (COD)', 'JazzCash/Bank Transfer'].map(method => (
-                  <label key={method} className="flex items-center p-4 border rounded-md hover:border-black cursor-pointer">
-                    <input
-                      type="radio"
-                      name="paymentMethod"
-                      value={method}
-                      checked={form.paymentMethod === method}
-                      onChange={handleChange}
-                      className="h-4 w-4 text-black focus:ring-black border-gray-300"
-                    />
-                    <span className="ml-3 font-medium text-gray-900">{method}</span>
-                  </label>
-                ))}
-              </div>
-
-              {form.paymentMethod === 'JazzCash/Bank Transfer' && (
-                <div className="mt-6 p-4 border border-blue-300 bg-blue-50 rounded-md">
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">JazzCash/Bank Transfer Details</h3>
+              {/* Only EasyPaisa payment option */}
+              <div className="p-4 border border-blue-300 bg-blue-50 rounded-md">
+                <div className="flex items-center mb-4">
+                  <input
+                    type="radio"
+                    name="paymentMethod"
+                    value="EasyPaisa"
+                    checked={form.paymentMethod === 'EasyPaisa'}
+                    onChange={handleChange}
+                    className="h-4 w-4 text-black focus:ring-black border-gray-300"
+                  />
+                  <span className="ml-3 font-medium text-gray-900">EasyPaisa</span>
+                </div>
+                
+                <div className="mt-4">
+                  <h3 className="text-base sm:text-lg font-semibold mb-3">EasyPaisa Details</h3>
                   <p className="text-gray-700 text-sm sm:text-base mb-4">
                     Please transfer the total amount of PKR {total.toLocaleString()} to our account:
                   </p>
                   <ul className="list-disc list-inside text-gray-800 text-sm sm:text-base mb-4">
-                    <li><strong>Bank Account Details:</strong> </li>
-                    <li><strong>Bank name</strong> Meezan Bank</li>
-                    <li><strong>Account name</strong> AYESHA AMIN</li>
-                    <li><strong>Account number</strong> 02360112042678</li>
+                    <li><strong>Account name</strong> Fouzia Waseem </li>
+                    <li><strong>Account number</strong> 03007801944</li>
                   </ul>
                   <p className="text-gray-700 text-sm sm:text-base mb-4">
                     After making the transfer, please upload a screenshot of the transaction or bank transfer receipt as proof of payment.
@@ -594,24 +589,7 @@ const CheckoutPage = () => {
                     )}
                   </div>
                 </div>
-              )}
-
-              {form.paymentMethod === 'Cash on Delivery (COD)' && (
-                <div className="mt-6 p-4 border border-green-300 bg-green-50 rounded-md">
-                  <h3 className="text-base sm:text-lg font-semibold mb-3">Cash on Delivery (COD) Information</h3>
-                  <p className="text-gray-700 text-sm sm:text-base mb-4">
-                    Pay cash when your order is delivered. Please have exact change ready.
-                  </p>
-                  <p className="text-gray-700 text-sm sm:text-base mb-4">
-                    <strong>Total Amount to Pay on Delivery:</strong> PKR {total.toLocaleString()}
-                  </p>
-                  <ul className="list-disc list-inside text-gray-800 text-sm sm:text-base">
-                    <li>You will pay the delivery person upon receiving your order</li>
-                    <li>Please verify the items before making payment</li>
-                    <li>Contact us if there are any issues with your order</li>
-                  </ul>
-                </div>
-              )}
+              </div>
 
               <div className="mt-6">
                 <label className="block text-sm font-medium text-gray-700 mb-1">Promo Code</label>
@@ -716,16 +694,14 @@ const CheckoutPage = () => {
               <div className="mt-4 p-3 bg-gray-50 rounded-md">
                 <p className="text-sm text-gray-600">Payment Method:</p>
                 <p className="text-sm font-medium">{form.paymentMethod}</p>
-                {form.paymentMethod === 'Cash on Delivery (COD)' && (
-                  <p className="text-xs text-gray-500 mt-1">Pay PKR {total.toLocaleString()} upon delivery</p>
-                )}
+                <p className="text-xs text-gray-500 mt-1">Please upload payment proof after transfer</p>
               </div>
 
               <button
                 onClick={placeOrder}
-                disabled={loading || cartItems.length === 0 || convertingImage || (form.paymentMethod === 'JazzCash/Bank Transfer' && !bankTransferProofBase64)}
+                disabled={loading || cartItems.length === 0 || convertingImage || !bankTransferProofBase64}
                 className={`mt-6 w-full py-3 px-4 rounded-md font-medium text-base ${
-                  loading || cartItems.length === 0 || convertingImage || (form.paymentMethod === 'JazzCash/Bank Transfer' && !bankTransferProofBase64)
+                  loading || cartItems.length === 0 || convertingImage || !bankTransferProofBase64
                     ? 'bg-gray-400 cursor-not-allowed' 
                     : 'bg-black text-white hover:bg-gray-800'
                 } transition`}
@@ -740,10 +716,8 @@ const CheckoutPage = () => {
                   </span>
                 ) : cartItems.length === 0 ? (
                   'Your Cart is Empty'
-                ) : form.paymentMethod === 'JazzCash/Bank Transfer' && !bankTransferProofBase64 ? (
+                ) : !bankTransferProofBase64 ? (
                   'Upload payment proof'
-                ) : form.paymentMethod === 'Cash on Delivery (COD)' ? (
-                  'Place COD Order'
                 ) : (
                   'Place Order'
                 )}

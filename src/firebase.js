@@ -7,13 +7,13 @@ import { getStorage } from 'firebase/storage';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDqBYgXZ-FTUmo8E8xIpNzJK3WMCzRjv1c",
-  authDomain: "hiba-3f736.firebaseapp.com",
-  projectId: "hiba-3f736",
-  storageBucket: "hiba-3f736.firebasestorage.app",
-  messagingSenderId: "796604120801",
-  appId: "1:796604120801:web:02cd978b74444128c4c1a0",
-  measurementId: "G-SR3LPPGYDL"
+ apiKey: "AIzaSyAoe-LNqtZ115hTaivyUnLbY3G6OsF9ZtU",
+  authDomain: "laliza-world.firebaseapp.com",
+  projectId: "laliza-world",
+  storageBucket: "laliza-world.firebasestorage.app",
+  messagingSenderId: "401442010134",
+  appId: "1:401442010134:web:fb18c53de6c208c2197137",
+  measurementId: "G-7K2T2LMY7M"
 };
 
 const app = initializeApp(firebaseConfig);

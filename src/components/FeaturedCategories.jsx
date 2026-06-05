@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom';
 const categories = [
     {
     id: 1,
-    title: "Bracelets ˚⊹♡",
-    imageUrl: "https://i.postimg.cc/wx0XrXnS/image.png",
-    link: "Bracelets"
+    title: "Makeup ˚⊹♡",
+    imageUrl: "https://pbs.twimg.com/media/HKEe9gtb0AArtK_?format=jpg&name=small",
+    link: "Makeup"
   },
   {
     id: 2,
-    title: "Pendants ⋆｡𖦹°",
-    imageUrl: "https://i.postimg.cc/CLRq6WGq/image.png",
-      link: "Pendants",
+    title: "Nails ⋆｡𖦹°",
+    imageUrl: "https://pbs.twimg.com/media/HKEfApoaIAAGCla?format=jpg&name=medium",
+      link: "Nails",
   },
 
 
@@ -23,94 +23,17 @@ const categories = [
   // },
       {
     id: 3,
-    title: "Earrings ˚⋆𐙚｡",
-    imageUrl: "https://pbs.twimg.com/media/G1SoQphW8AAN_8l?format=png&name=small",
-      link: "Earrings"
+    title: "Lip glosses ˚⋆𐙚｡",
+    imageUrl: "https://pbs.twimg.com/media/HKEfCjTaYAAfPaO?format=jpg&name=900x900",
+      link: "Lip glosses"
   },
       {
     id: 4,
-    title: "Resin jhumkas ｡°✩",
-    imageUrl:"https://pbs.twimg.com/media/G1Sn5keXEAAWjmD?format=png&name=small",
-     link: "Resin jhumkas"
+    title: "Hair products ｡°✩",
+    imageUrl:"https://pbs.twimg.com/media/HKEfHPlaMAA7Ez0?format=png&name=small",
+     link: "Hair products"
   },
-        {
-    id: 5,
-    title: "Vintage Collection⋆⭒˚.⋆",
-    imageUrl:"https://i.postimg.cc/ZYd98r48/image.png",
-     link: "Vintage Collection"
-  },
-  {
-      id: 6,
-    title: "Gifts ⋆⭒˚.⋆",
-    imageUrl:"https://i.postimg.cc/cH8JcSyx/image.png",
-     link: "Gifts"
-  },
-    {
-      id: 7,
-    title: "Flower preservation⋆⭒˚.⋆",
-    imageUrl:"https://i.postimg.cc/HLrWpgLw/image.png",
-     link: "Flower preservation"
-  },
-      {
-      id: 7,
-    title: "Rings⋆⭒˚.⋆",
-    imageUrl:"https://pbs.twimg.com/media/G1Sn4YIWcAAnzup?format=png&name=small",
-     link: "Rings"
-  },
-      {
-      id: 7,
-    title: "3 piece sets⭒˚.⋆",
-    imageUrl:"https://i.postimg.cc/9Q4s0FGQ/image.png",
-     link: "3 piece sets"
-  },
-        {
-      id: 7,
-    title: "Tiaras⭒˚.⋆",
-    imageUrl:"https://pbs.twimg.com/media/G2L_sByWAAEkmWY?format=png&name=small",
-     link: "Tiaras"
-  },
-            {
-      id: 7,
-    title: "Arm cuffs⭒˚.⋆",
-    imageUrl:"https://i.pinimg.com/736x/1d/50/3e/1d503e23be324ac37218017f893b597b.jpg",
-     link: "Arm cuffs"
-  },
-                {
-      id: 7,
-    title: "Neck pieces⭒˚.⋆",
-    imageUrl:"https://i.pinimg.com/736x/e1/8d/d7/e18dd7c251ba4a5896ffabf321ff22ff.jpg",
-     link: "Neck pieces"
-  },
-                    {
-      id: 7,
-    title: "Eid Boxes⭒˚.⋆",
-    imageUrl:"https://pbs.twimg.com/media/HBT8lKfaIAAnsHr?format=jpg&name=small",
-     link: "Eid Boxes"
-  },
-                        {
-      id: 7,
-    title: "Bangles⭒˚.⋆",
-    imageUrl:"https://pbs.twimg.com/media/HBT8ogUbcAEFE5x?format=jpg&name=small",
-     link: "Bangles"
-  },
-                          {
-      id: 7,
-    title: "Hair Accessories⭒˚.⋆",
-    imageUrl:"https://pbs.twimg.com/media/HJkrk7JbEAAI3n4?format=jpg&name=medium",
-     link: "Hair Accessories"
-  },
-  {
-      id: 7,
-    title: "Charms⭒˚.⋆",
-    imageUrl:"https://pbs.twimg.com/media/HJkrpnWbgAAVbHn?format=jpg&name=900x900",
-     link: "Charms"
-  },
-  //       {
-  //   id: 6,
-  //   title: "Bag charms",
-  //   imageUrl: "https://scontent.flhe3-2.fna.fbcdn.net/v/t1.15752-9/520244288_1267810474939004_9048492148598199566_n.png?stp=dst-png_s640x640&_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=neIk5TZGFm4Q7kNvwEuXfQ_&_nc_oc=AdmxJ4KDwZ-uqPdqouvocGIJ_PMCJuOMaF7ERpOXqSlLAudbRPv9J7oqkY8r3siKLZI&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.flhe3-2.fna&oh=03_Q7cD2wFMPcWh2mt2rXhc_FNIMeleWIzjCbZQawAV-wDep1F7MQ&oe=68A70F62"
-  // },
-
+    
 ];
 
 function FeaturedCategories() {
