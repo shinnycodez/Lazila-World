@@ -530,7 +530,7 @@ const CheckoutPage = () => {
                   <div className="ml-3">
                     <p className="font-medium text-gray-900">Standard Delivery</p>
                     <p className="text-sm text-gray-500">
-                      PKR 300 for all cities - Delivery in 8-10 business days
+                      PKR 300 for all cities - Delivery in one week
                     </p>
                   </div>
                 </label>
